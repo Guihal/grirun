@@ -1,5 +1,5 @@
 export function hideImages(options, count) {
-    if (options.querySelector('.hide.hidden-images')) return
+    // if (options.querySelector('.hide.hidden-images')) return
     if (count <= 1) return
     count--
 
@@ -21,14 +21,27 @@ export function hideImages(options, count) {
         block.append(option)
 
         if (!counter) return
-        counter.textContent = `+${options.length - count + 1}`
+        counter.textContent = `+${options.length - count}`
     })
 
     block.addEventListener('click', () => {
-        block.classList.add('hide')
+        const prod = block.closest('.js-product')
+        if (!prod) return
 
-        options.forEach((option) => {
-            option.classList.remove('hidden')
-        })
+        let link = prod.dataset.productUrl
+        console.log(link)
+        if (link === undefined) return
+
+        link = new URL(link)
+
+        const url = new URL(link.pathname, window.location.origin)
+        console.log(url)
+        window.location.href = url
+
+        // block.classList.add('hide')
+
+        // options.forEach((option) => {
+        //     option.classList.remove('hidden')
+        // })
     })
 }

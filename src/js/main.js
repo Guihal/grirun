@@ -1,5 +1,7 @@
 import { addSlides } from './addSlides'
+import { isProductPage } from './isProductPage'
 import { mutationObserverHideImages } from './mutationObserverHideImages'
 
-addSlides()
+const isLoadScripts = isProductPage()
+addSlides(isLoadScripts)
 mutationObserverHideImages()

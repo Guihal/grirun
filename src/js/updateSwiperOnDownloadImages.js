@@ -28,5 +28,22 @@ export function updateSwiperOnDownloadImages(mainSlider, slider) {
         })
     }
 
+    console.log('wtf')
+
+    let isDisconnected = false
+
+    document.addEventListener('DOMContentLoaded', disconnect)
+
+    window.addEventListener('load', disconnect)
+
+    setTimeout(disconnect, 5000)
+
+    function disconnect() {
+        if (isDisconnected) return
+        isDisconnected = true
+        observer.disconnect()
+        console.log('disconnected')
+    }
+
     observer.observe(mainSlider, { childList: true, subtree: true })
 }

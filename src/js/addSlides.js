@@ -4,7 +4,7 @@ import { updateSwiperOnDownloadImages } from './updateSwiperOnDownloadImages'
 import { elementReady } from './utils/elementReady'
 import { throttle } from './utils/throttle'
 
-export async function addSlides() {
+export async function addSlides(isLoadScripts) {
     const mainSlider = await elementReady('.t-store__product-snippet .t-slds__main')
     const idSlider = 'guihal-swiper-thumbs'
     const slider = Object.assign(document.createElement('div'), { className: 'swiper-container' })
@@ -28,6 +28,8 @@ export async function addSlides() {
     let swiper
 
     // let lastwidth = window.innerWidth
+
+    await isLoadScripts
 
     const initSwiper = async () => {
         // if ((window.innerWidth >= 980 && lastwidth >= 980) || (window.innerWidth < 980 && lastwidth < 980)) return

@@ -29,6 +29,7 @@ function waiting(parent, className) {
 
         const observer = new MutationObserver(() => {
             waitBlock(parent, className, resolve)
+            observer.disconnect()
         })
 
         observer.observe(parent, { childList: true, subtree: true })
